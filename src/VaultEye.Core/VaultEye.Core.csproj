@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <ProjectReference Include="..\VaultEye.Scanner\VaultEye.Scanner.csproj" />
+    <ProjectReference Include="..\VaultEye.Rules\VaultEye.Rules.csproj" />
+    <ProjectReference Include="..\VaultEye.Reporting\VaultEye.Reporting.csproj" />
+    <ProjectReference Include="..\VaultEye.Models\VaultEye.Models.csproj" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+</Project>

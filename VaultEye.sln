@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{15B6A8C1-1316-4E69-80C5-E886E2EA4F4F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VaultEye.CLI", "src\VaultEye.CLI\VaultEye.CLI.csproj", "{B52AC9C1-6D92-48C0-87C2-1648F17377E7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VaultEye.Core", "src\VaultEye.Core\VaultEye.Core.csproj", "{4C3AAFF3-F10F-42AF-8421-77815B388D37}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VaultEye.Scanner", "src\VaultEye.Scanner\VaultEye.Scanner.csproj", "{5CBEC32D-6DA6-4F88-B337-49251DCF48D2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VaultEye.Rules", "src\VaultEye.Rules\VaultEye.Rules.csproj", "{328CB712-4FCB-4BDE-85C3-960418346468}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VaultEye.Reporting", "src\VaultEye.Reporting\VaultEye.Reporting.csproj", "{B0066AA3-1475-4CC6-8858-89154D22CE6D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B52AC9C1-6D92-48C0-87C2-1648F17377E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B52AC9C1-6D92-48C0-87C2-1648F17377E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B52AC9C1-6D92-48C0-87C2-1648F17377E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B52AC9C1-6D92-48C0-87C2-1648F17377E7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4C3AAFF3-F10F-42AF-8421-77815B388D37}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C3AAFF3-F10F-42AF-8421-77815B388D37}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C3AAFF3-F10F-42AF-8421-77815B388D37}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C3AAFF3-F10F-42AF-8421-77815B388D37}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5CBEC32D-6DA6-4F88-B337-49251DCF48D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5CBEC32D-6DA6-4F88-B337-49251DCF48D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5CBEC32D-6DA6-4F88-B337-49251DCF48D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5CBEC32D-6DA6-4F88-B337-49251DCF48D2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{328CB712-4FCB-4BDE-85C3-960418346468}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{328CB712-4FCB-4BDE-85C3-960418346468}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{328CB712-4FCB-4BDE-85C3-960418346468}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{328CB712-4FCB-4BDE-85C3-960418346468}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B0066AA3-1475-4CC6-8858-89154D22CE6D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B0066AA3-1475-4CC6-8858-89154D22CE6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B0066AA3-1475-4CC6-8858-89154D22CE6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B0066AA3-1475-4CC6-8858-89154D22CE6D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B52AC9C1-6D92-48C0-87C2-1648F17377E7} = {15B6A8C1-1316-4E69-80C5-E886E2EA4F4F}
+		{4C3AAFF3-F10F-42AF-8421-77815B388D37} = {15B6A8C1-1316-4E69-80C5-E886E2EA4F4F}
+		{5CBEC32D-6DA6-4F88-B337-49251DCF48D2} = {15B6A8C1-1316-4E69-80C5-E886E2EA4F4F}
+		{328CB712-4FCB-4BDE-85C3-960418346468} = {15B6A8C1-1316-4E69-80C5-E886E2EA4F4F}
+		{B0066AA3-1475-4CC6-8858-89154D22CE6D} = {15B6A8C1-1316-4E69-80C5-E886E2EA4F4F}
+	EndGlobalSection
+EndGlobal
