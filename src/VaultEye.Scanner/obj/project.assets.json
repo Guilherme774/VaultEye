@@ -1,0 +1,94 @@
+{
+  "version": 3,
+  "targets": {
+    "net8.0": {
+      "VaultEye.Models/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "compile": {
+          "bin/placeholder/VaultEye.Models.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/VaultEye.Models.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "VaultEye.Models/1.0.0": {
+      "type": "project",
+      "path": "../VaultEye.Models/VaultEye.Models.csproj",
+      "msbuildProject": "../VaultEye.Models/VaultEye.Models.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net8.0": [
+      "VaultEye.Models >= 1.0.0"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\silva\\.nuget\\packages\\": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "C:\\dev\\Security\\VaultEye\\src\\VaultEye.Scanner\\VaultEye.Scanner.csproj",
+      "projectName": "VaultEye.Scanner",
+      "projectPath": "C:\\dev\\Security\\VaultEye\\src\\VaultEye.Scanner\\VaultEye.Scanner.csproj",
+      "packagesPath": "C:\\Users\\silva\\.nuget\\packages\\",
+      "outputPath": "C:\\dev\\Security\\VaultEye\\src\\VaultEye.Scanner\\obj\\",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "C:\\Users\\silva\\AppData\\Roaming\\NuGet\\NuGet.Config"
+      ],
+      "originalTargetFrameworks": [
+        "net8.0"
+      ],
+      "sources": {
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "projectReferences": {
+            "C:\\dev\\Security\\VaultEye\\src\\VaultEye.Models\\VaultEye.Models.csproj": {
+              "projectPath": "C:\\dev\\Security\\VaultEye\\src\\VaultEye.Models\\VaultEye.Models.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
+      }
+    },
+    "frameworks": {
+      "net8.0": {
+        "targetAlias": "net8.0",
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48",
+          "net481"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.407/PortableRuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}
