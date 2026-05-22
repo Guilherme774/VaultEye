@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("VaultEye.Rules")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2a03edd6d46909b61b0c2a669616ce94bb370ca4")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6a500add47e0f383848bd6d3a0510caac3cc6432")]
 [assembly: System.Reflection.AssemblyProductAttribute("VaultEye.Rules")]
 [assembly: System.Reflection.AssemblyTitleAttribute("VaultEye.Rules")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

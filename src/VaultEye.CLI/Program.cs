@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using VaultEye.Core.services;
+﻿using VaultEye.Core.services;
 
 namespace VaultEye.CLI
 {
@@ -10,13 +6,45 @@ namespace VaultEye.CLI
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("[@] Welcome to VaultEye Scanner");
+            Console.Write(@" /$$    /$$                    /$$   /$$     /$$$$$$$$                    
+                            | $$   | $$                   | $$  | $$    | $$_____/                    
+                            | $$   | $$ /$$$$$$  /$$   /$$| $$ /$$$$$$  | $$       /$$   /$$  /$$$$$$ 
+                            |  $$ / $$/|____  $$| $$  | $$| $$|_  $$_/  | $$$$$   | $$  | $$ /$$__  $$
+                             \  $$ $$/  /$$$$$$$| $$  | $$| $$  | $$    | $$__/   | $$  | $$| $$$$$$$$
+                              \  $$$/  /$$__  $$| $$  | $$| $$  | $$ /$$| $$      | $$  | $$| $$_____/
+                               \  $/  |  $$$$$$$|  $$$$$$/| $$  |  $$$$/| $$$$$$$$|  $$$$$$$|  $$$$$$$
+                                \_/    \_______/ \______/ |__/   \___/  |________/ \____  $$ \_______/
+                                                                                   /$$  | $$          
+                                                                                  |  $$$$$$/          
+                                                                                   \______/           ");
 
-            var core = new ScanOrchestrator();
 
-            core.InitCore();
+            Console.WriteLine("\n[@] Welcome to VaultEye Scanner");
+            Console.WriteLine("[@] Select the type of scanner do you want:\n");
+            Console.WriteLine("(1) File Scanning");
+            Console.WriteLine("(2) Repository Scanning");
+            Console.WriteLine("(0) Exit VaultEye");
 
-            Console.WriteLine("[@] VaultEye turning off, see ya!");
+            Console.Write("\n\n\n\n>> ");
+            string selectedScanning = Console.ReadLine();
+
+            switch(selectedScanning)
+            {
+                case "1":
+                    var core = new ScanOrchestrator();
+
+                    Console.Write("\n\nSet the directory to scan >> ");
+                    string selectedDirectory = Console.ReadLine();
+                    core.InitCore(selectedDirectory);
+                    Console.WriteLine("[@] VaultEye turning off, see ya!");
+                    break;
+                case "2":
+                    Console.WriteLine("[*] Method not implemented yet!");
+                    break;
+                default:
+                    Console.WriteLine("[@] VaultEye turning off, see ya!");
+                    break;
+            }
         }
     }
 }

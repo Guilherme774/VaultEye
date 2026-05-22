@@ -1,12 +1,9 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
 namespace VaultEye.Models
 {
     public class Rule
     {
-        
+        public string Name { get; set; }
+        public string Pattern { get; set; }
+        public string Severity { get; set; }
     }
 }
