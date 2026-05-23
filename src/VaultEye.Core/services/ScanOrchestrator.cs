@@ -11,12 +11,12 @@ namespace VaultEye.Core.services
 {
     public class ScanOrchestrator
     {
-        public void InitCore(string directory)
+        public int InitCore(string directory)
         {
             var scanner = new FileScannerService();
-            var lines = scanner.ReadFile(directory);
+            var scannedFiles = scanner.ReadFile(directory);
             var engine = new RegexRuleEngine();
-            var findings = engine.Analyze(directory, lines, new List<Rule>
+            var findings = engine.Analyze(scannedFiles, new List<Rule>
             {
                 PasswordRule.Create()
             });
@@ -30,6 +30,8 @@ namespace VaultEye.Core.services
                 Console.WriteLine($"Line: {finding.LineNumber}");
                 Console.WriteLine($"Match: {finding.MatchedContent}");
             }
+
+            return findings.Count;
         }
     }
 }
