@@ -2,22 +2,32 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using VaultEye.Models;
 
 namespace VaultEye.Scanner.services
 {
     public class FileScannerService
     {
-        public IEnumerable<string> ReadFile(string filePath)
+        public IEnumerable<ScannedFile> ReadFile(string directory)
         {   
             Console.WriteLine("[#] Scan started . . .");
 
-            if (!File.Exists(filePath))
+            string[] files = Directory.GetFiles(directory, "*.*", SearchOption.AllDirectories);
+
+            List<ScannedFile> lines = new();
+
+            foreach (var file in files)
             {
-                Console.WriteLine($"[!] File not found: {filePath}");
-                return Enumerable.Empty<string>();
+                if (File.Exists(file))
+                {
+                    ScannedFile scanFile = new ScannedFile();
+                    scanFile.FileName = file;
+                    scanFile.Content = File.ReadLines(file).ToList();
+
+                    lines.Add(scanFile);
+                }
             }
 
-            var lines = File.ReadLines(filePath).ToList();
             return lines;
         }
     }
