@@ -111,8 +111,8 @@ namespace VaultEye.CLI
         {
             var core = new ScanOrchestrator();
             Console.Write("\n\nSet the directory to scan >> ");
-            string selectedDirectory = Console.ReadLine();
-            int findings = core.InitCore(selectedDirectory);
+            string? selectedDirectory = Console.ReadLine();
+            int findings = core.InitCore(selectedDirectory!);
 
             return findings;
         }
@@ -129,13 +129,10 @@ namespace VaultEye.CLI
             Console.WriteLine("  Scan completed successfully!");
             Console.ResetColor();
 
-            if(findings != null)
-            {
-                Console.ForegroundColor = ConsoleColor.White;
-                Console.WriteLine($"  Findings detected: {findings}");
-                Console.ResetColor();
-            }
-
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine($"  Findings detected: {findings}");
+            Console.ResetColor();
+            
             Console.ForegroundColor = ConsoleColor.DarkGray;
             Console.WriteLine("------------------------------------------------------");
             Console.ResetColor();
