@@ -1,4 +1,5 @@
 using VaultEye.Models;
+using VaultEye.Models.enums;
 
 namespace VaultEye.Rules.rules
 {
@@ -9,7 +10,8 @@ namespace VaultEye.Rules.rules
             return new Rule
             {
                 Name = "GitHub Token",
-                Severity = "CRITICAL",
+                Severity = SeverityType.CRITICAL,
+                Category = CategoryType.Tokens,
                 Pattern = @"gh[pousr]_[A-Za-z0-9_]{20,}"
             };
         }

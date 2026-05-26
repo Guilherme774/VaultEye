@@ -1,4 +1,5 @@
 using VaultEye.Models;
+using VaultEye.Models.enums;
 
 namespace VaultEye.Rules.rules
 {
@@ -9,7 +10,8 @@ namespace VaultEye.Rules.rules
             return new Rule
             {
                 Name = "Connection String",
-                Severity = "HIGH",
+                Severity = SeverityType.HIGH,
+                Category = CategoryType.Database,
                 Pattern = @"(Server|Data Source|Host)=.+;(Database|Initial Catalog)=.+;(User Id|UID|Username)=.+;(Password|PWD)=.+;"
             };
         }

@@ -1,4 +1,5 @@
 using VaultEye.Models;
+using VaultEye.Models.enums;
 
 namespace VaultEye.Rules.rules
 {
@@ -9,7 +10,8 @@ namespace VaultEye.Rules.rules
             return new Rule
             {
                 Name = "Bearer Token",
-                Severity = "HIGH",
+                Severity = SeverityType.HIGH,
+                Category = CategoryType.Tokens,
                 Pattern = @"Bearer\s+[A-Za-z0-9\-._~+/]+=*"
             };
         }

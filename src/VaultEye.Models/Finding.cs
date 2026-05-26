@@ -1,3 +1,5 @@
+using VaultEye.Models.enums;
+
 namespace VaultEye.Models
 {
     public class Finding
@@ -5,8 +7,9 @@ namespace VaultEye.Models
         public string RuleName { get; set; }
             = string.Empty;
 
-        public string Severity { get; set; }
-            = string.Empty;
+        public CategoryType Category { get; set; }
+
+        public SeverityType Severity { get; set; }
 
         public string FilePath { get; set; }
             = string.Empty;

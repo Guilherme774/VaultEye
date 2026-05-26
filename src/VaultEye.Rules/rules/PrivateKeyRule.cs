@@ -1,4 +1,5 @@
 using VaultEye.Models;
+using VaultEye.Models.enums;
 
 namespace VaultEye.Rules.rules
 {
@@ -9,7 +10,8 @@ namespace VaultEye.Rules.rules
             return new Rule
             {
                 Name = "Private Key",
-                Severity = "CRITICAL",
+                Severity = SeverityType.CRITICAL,
+                Category = CategoryType.Credentials,
                 Pattern = @"-----BEGIN (RSA|DSA|EC|OPENSSH|PGP)? ?PRIVATE KEY-----"
             };
         }        

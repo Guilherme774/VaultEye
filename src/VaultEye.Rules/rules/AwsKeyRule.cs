@@ -1,4 +1,5 @@
 using VaultEye.Models;
+using VaultEye.Models.enums;
 
 namespace VaultEye.Rules.rules
 {
@@ -9,7 +10,8 @@ namespace VaultEye.Rules.rules
             return new Rule
             {
                 Name = "AWS Key",
-                Severity = "CRITCAL",
+                Severity = SeverityType.CRITICAL,
+                Category = CategoryType.Cloud,
                 Pattern = @"AKIA[0-9A-Z]{16}"
             };
         }

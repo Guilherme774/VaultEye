@@ -24,6 +24,7 @@ namespace VaultEye.Rules.engines
                             findings.Add(new Finding
                             {
                                 RuleName = rule.Name,
+                                Category = rule.Category,
                                 Severity = rule.Severity,
                                 FilePath = scannedFile.FileName,
                                 LineNumber = lineNumber,

@@ -1,9 +1,5 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection.Metadata.Ecma335;
-using System.Threading.Tasks;
 using VaultEye.Models;
+using VaultEye.Models.enums;
 
 namespace VaultEye.Rules.rules
 {
@@ -14,7 +10,8 @@ namespace VaultEye.Rules.rules
             return new Rule
             {
                 Name = "Hardcoded Password",
-                Severity = "HIGH",
+                Severity = SeverityType.HIGH,
+                Category = CategoryType.Credentials,
                 Pattern = @"(password|pwd|passwd|secret|token|api[_-]?key)\w*\s*=\s*.+"
             };
         }
