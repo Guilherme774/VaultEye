@@ -1,3 +1,5 @@
+using VaultEye.Models.enums;
+
 namespace VaultEye.Models
 {
     public class Rule
@@ -8,7 +10,8 @@ namespace VaultEye.Models
         public string Pattern { get; set; }
             = string.Empty;
 
-        public string Severity { get; set; }
-            = string.Empty;
+        public SeverityType Severity { get; set; }
+
+        public CategoryType Category { get; set; }
     }
 }

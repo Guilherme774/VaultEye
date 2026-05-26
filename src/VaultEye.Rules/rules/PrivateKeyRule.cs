@@ -3,17 +3,17 @@ using VaultEye.Models.enums;
 
 namespace VaultEye.Rules.rules
 {
-    public class PasswordRule
+    public static class PrivateKeyRule
     {
         public static Rule Create()
         {
             return new Rule
             {
-                Name = "Hardcoded Password",
-                Severity = SeverityType.HIGH,
+                Name = "Private Key",
+                Severity = SeverityType.CRITICAL,
                 Category = CategoryType.Credentials,
-                Pattern = @"(password|pwd|passwd|secret|token|api[_-]?key)\w*\s*=\s*.+"
+                Pattern = @"-----BEGIN (RSA|DSA|EC|OPENSSH|PGP)? ?PRIVATE KEY-----"
             };
-        }
+        }        
     }
 }

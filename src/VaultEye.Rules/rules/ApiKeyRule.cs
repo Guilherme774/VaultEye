@@ -3,16 +3,16 @@ using VaultEye.Models.enums;
 
 namespace VaultEye.Rules.rules
 {
-    public class PasswordRule
+    public static class ApiKeyRule
     {
         public static Rule Create()
         {
             return new Rule
             {
-                Name = "Hardcoded Password",
+                Name = "API Key",
                 Severity = SeverityType.HIGH,
-                Category = CategoryType.Credentials,
-                Pattern = @"(password|pwd|passwd|secret|token|api[_-]?key)\w*\s*=\s*.+"
+                Category = CategoryType.Authentication,
+                Pattern = @"(?i)(api[_-]?key|apikey)\s*[:=]\s*['""]?[A-Za-z0-9_\-]{16,}"
             };
         }
     }

@@ -3,16 +3,16 @@ using VaultEye.Models.enums;
 
 namespace VaultEye.Rules.rules
 {
-    public static class AwsKeyRule
+    public static class GithubTokenRule
     {
         public static Rule Create()
         {
             return new Rule
             {
-                Name = "AWS Key",
+                Name = "GitHub Token",
                 Severity = SeverityType.CRITICAL,
-                Category = CategoryType.Cloud,
-                Pattern = @"AKIA[0-9A-Z]{16}"
+                Category = CategoryType.Tokens,
+                Pattern = @"gh[pousr]_[A-Za-z0-9_]{20,}"
             };
         }
     }

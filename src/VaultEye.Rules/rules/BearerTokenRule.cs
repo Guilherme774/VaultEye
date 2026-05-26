@@ -3,16 +3,16 @@ using VaultEye.Models.enums;
 
 namespace VaultEye.Rules.rules
 {
-    public class PasswordRule
+    public static class BearerTokenRule
     {
         public static Rule Create()
         {
             return new Rule
             {
-                Name = "Hardcoded Password",
+                Name = "Bearer Token",
                 Severity = SeverityType.HIGH,
-                Category = CategoryType.Credentials,
-                Pattern = @"(password|pwd|passwd|secret|token|api[_-]?key)\w*\s*=\s*.+"
+                Category = CategoryType.Tokens,
+                Pattern = @"Bearer\s+[A-Za-z0-9\-._~+/]+=*"
             };
         }
     }
