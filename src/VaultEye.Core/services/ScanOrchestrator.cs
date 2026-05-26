@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using VaultEye.Scanner.services;
 using VaultEye.Rules.engines;
 using VaultEye.Rules.rules;
@@ -14,7 +10,7 @@ namespace VaultEye.Core.services
         public int InitCore(string directory)
         {
             var scanner = new FileScannerService();
-            var scannedFiles = scanner.ReadFile(directory);
+            var scannedFiles = scanner.ReadFiles(directory);
             var engine = new RegexRuleEngine();
             var findings = engine.Analyze(scannedFiles, new List<Rule>
             {
