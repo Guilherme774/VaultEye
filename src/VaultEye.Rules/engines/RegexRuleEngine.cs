@@ -5,32 +5,28 @@ namespace VaultEye.Rules.engines
 {
     public class RegexRuleEngine
     {
-        public List<Finding> Analyze(IEnumerable<ScannedFile> scannedFiles, IEnumerable<Rule> rules)
+        public List<Finding> Analyze(ScannedFile scannedFile, IEnumerable<Rule> rules)
         {
             var findings = new List<Finding>();
+            int lineNumber = 0;
 
-            foreach (var scannedFile in scannedFiles)
+            foreach (var line in scannedFile.Content)
             {
-                int lineNumber = 0;
+                lineNumber++;
 
-                foreach (var line in scannedFile.Content)
+                foreach (var rule in rules)
                 {
-                    lineNumber++;
-
-                    foreach (var rule in rules)
+                    if (Regex.IsMatch(line, rule.Pattern, RegexOptions.IgnoreCase))
                     {
-                        if (Regex.IsMatch(line, rule.Pattern, RegexOptions.IgnoreCase))
+                        findings.Add(new Finding
                         {
-                            findings.Add(new Finding
-                            {
-                                RuleName = rule.Name,
-                                Category = rule.Category,
-                                Severity = rule.Severity,
-                                FilePath = scannedFile.FileName,
-                                LineNumber = lineNumber,
-                                MatchedContent = line.Trim()
-                            });
-                        }
+                            RuleName = rule.Name,
+                            Severity = rule.Severity,
+                            Category = rule.Category,
+                            FilePath = scannedFile.FileName,
+                            LineNumber = lineNumber,
+                            MatchedContent = line.Trim()
+                        });
                     }
                 }
             }

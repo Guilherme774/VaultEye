@@ -2,31 +2,36 @@ using VaultEye.Scanner.services;
 using VaultEye.Rules.engines;
 using VaultEye.Rules.rules;
 using VaultEye.Models;
+using VaultEye.Reporting.formatters;
+using System.Diagnostics;
 
 namespace VaultEye.Core.services
 {
     public class ScanOrchestrator
     {
-        public int InitCore(string directory)
+        public ScanResult InitCore(string directory)
         {
+            var stopwatch = Stopwatch.StartNew();
             var rules = RuleFactory.GetRules();
             var scanner = new FileScannerService();
-            var scannedFiles = scanner.ReadFiles(directory);
+            var scannedFiles = scanner.ReadFiles(directory).ToList();
             var engine = new RegexRuleEngine();
-            var findings = engine.Analyze(scannedFiles, rules);
+            List<Finding> findings = new();
 
-            foreach(var finding in findings)
+            foreach (var scannedFile in scannedFiles)
             {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine($"\n[{finding.Severity}] {finding.RuleName}");
-                Console.ResetColor();
-                Console.WriteLine($"Category: {finding.Category}");
-                Console.WriteLine($"File: {finding.FilePath}");
-                Console.WriteLine($"Line: {finding.LineNumber}");
-                Console.WriteLine($"Match: {finding.MatchedContent}");
+                findings.AddRange(engine.Analyze(scannedFile, rules));
             }
 
-            return findings.Count;
+            stopwatch.Stop();
+
+            return new ScanResult
+            {
+                FilesScanned = scannedFiles.Count,
+                FindingsCount = findings.Count,
+                Findings = findings,
+                DurationSeconds = stopwatch.Elapsed.TotalSeconds
+            };
         }
     }
 }

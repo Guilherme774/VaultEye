@@ -1,4 +1,7 @@
 ﻿using VaultEye.Core.services;
+using VaultEye.Models;
+using VaultEye.Reporting;
+using VaultEye.Reporting.formatters;
 
 namespace VaultEye.CLI
 {
@@ -6,31 +9,32 @@ namespace VaultEye.CLI
     {
         static void Main(string[] args)
         {
-            startProgram();
+            StartProgram();
 
-            while(true)
+            while (true)
             {
-                string selectedScanning = selectScanningMode();
+                string selectedScanning = SelectScanningMode();
 
-                switch(selectedScanning)
+                switch (selectedScanning)
                 {
                     case "1":
-                        int findings = startDirectoryScanner();
-                        closeProgram(findings);
+                        ScanResult result = StartDirectoryScanner();
+                        foreach (var finding in result.Findings)
+                        {
+                            ConsoleFindingFormatter.Print(finding);
+                        }
+                        ConsoleSummaryFormatter.Print(result);
+                        CloseProgram();
                         return;
                     case "2":
                     case "3":
-                        Console.ForegroundColor = ConsoleColor.Yellow;
-                        Console.WriteLine("\n[*] Method not implemented yet!\n");
-                        Console.ResetColor();
+                        ShowNotImplemented();
                         break;
                     case "0":
-                        closeProgram(0);
+                        CloseProgram();
                         return;
                     default:
-                        Console.ForegroundColor = ConsoleColor.Red;
-                        Console.WriteLine("\n[!] Option not allowed!\n");
-                        Console.ResetColor();
+                        ShowInvalidOption();
                         break;
                 }
             }
@@ -38,16 +42,16 @@ namespace VaultEye.CLI
 
         #region PRIVATE METHODS
 
-        private static void startProgram()
+        private static void StartProgram()
         {
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine(@"
-            ██╗   ██╗ █████╗ ██╗   ██╗██╗  ████████╗███████╗██╗   ██╗███████╗
-            ██║   ██║██╔══██╗██║   ██║██║  ╚══██╔══╝██╔════╝╚██╗ ██╔╝██╔════╝
-            ██║   ██║███████║██║   ██║██║     ██║   █████╗   ╚████╔╝ █████╗
-            ╚██╗ ██╔╝██╔══██║██║   ██║██║     ██║   ██╔══╝    ╚██╔╝  ██╔══╝
-             ╚████╔╝ ██║  ██║╚██████╔╝███████╗██║   ███████╗   ██║   ███████╗
-              ╚═══╝  ╚═╝  ╚═╝ ╚═════╝ ╚══════╝╚═╝   ╚══════╝   ╚═╝   ╚══════╝
+                ██╗   ██╗ █████╗ ██╗   ██╗██╗  ████████╗███████╗██╗   ██╗███████╗
+                ██║   ██║██╔══██╗██║   ██║██║  ╚══██╔══╝██╔════╝╚██╗ ██╔╝██╔════╝
+                ██║   ██║███████║██║   ██║██║     ██║   █████╗   ╚████╔╝ █████╗
+                ╚██╗ ██╔╝██╔══██║██║   ██║██║     ██║   ██╔══╝    ╚██╔╝  ██╔══╝
+                 ╚████╔╝ ██║  ██║╚██████╔╝███████╗██║   ███████╗   ██║   ███████╗
+                  ╚═══╝  ╚═╝  ╚═╝ ╚═════╝ ╚══════╝╚═╝   ╚══════╝   ╚═╝   ╚══════╝
             ");
             Console.ResetColor();
 
@@ -65,7 +69,7 @@ namespace VaultEye.CLI
             Console.ResetColor();
         }
 
-        private static string selectScanningMode()
+        private static string SelectScanningMode()
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("[ Select a scanning mode ]\n");
@@ -86,19 +90,20 @@ namespace VaultEye.CLI
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("  [0] Exit VaultEye");
             Console.ResetColor();
+            
+            Console.Write("\n>> ");
 
-            Console.Write("\n\n>> ");
             string? input = Console.ReadLine();
 
-            if(string.IsNullOrWhiteSpace(input))
+            if (string.IsNullOrWhiteSpace(input))
                 return string.Empty;
 
             input = input.Trim();
 
-            if(input.Length > 2)
+            if (input.Length > 2)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("\n[!] Input too long!");
+                Console.WriteLine("\n[!] Input too long!\n");
                 Console.ResetColor();
 
                 return string.Empty;
@@ -107,38 +112,49 @@ namespace VaultEye.CLI
             return input;
         }
 
-        private static int startDirectoryScanner()
+        private static ScanResult StartDirectoryScanner()
         {
-            var core = new ScanOrchestrator();
-            Console.Write("\n\nSet the directory to scan >> ");
-            string? selectedDirectory = Console.ReadLine();
-            int findings = core.InitCore(selectedDirectory!);
+            Console.Write("\nSet the directory to scan >> ");
 
-            return findings;
+            string? selectedDirectory = Console.ReadLine();
+
+            if (string.IsNullOrWhiteSpace(selectedDirectory))
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("\n[!] Invalid directory!");
+                Console.ResetColor();
+
+                return new ScanResult();
+            }
+
+            var core = new ScanOrchestrator();
+
+            return core.InitCore(selectedDirectory);
         }
 
-        private static void closeProgram(int findings)
+        private static void ShowNotImplemented()
+        {
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("\n[*] Method not implemented yet!\n");
+            Console.ResetColor();
+        }
+
+        private static void ShowInvalidOption()
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("\n[!] Option not allowed!\n");
+            Console.ResetColor();
+        }
+
+        private static void CloseProgram()
         {
             Console.WriteLine();
-
-            Console.ForegroundColor = ConsoleColor.DarkGray;
-            Console.WriteLine("------------------------------------------------------");
-            Console.ResetColor();
-
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("  Scan completed successfully!");
-            Console.ResetColor();
-
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine($"  Findings detected: {findings}");
-            Console.ResetColor();
-            
             Console.ForegroundColor = ConsoleColor.DarkGray;
             Console.WriteLine("------------------------------------------------------");
             Console.ResetColor();
 
             Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine("\n[%] VaultEye shutting down. . .");
+            Console.WriteLine("\n[%] VaultEye shutting down...");
             Console.ResetColor();
 
             Thread.Sleep(1200);
