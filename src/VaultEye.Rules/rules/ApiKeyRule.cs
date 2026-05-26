@@ -2,15 +2,15 @@ using VaultEye.Models;
 
 namespace VaultEye.Rules.rules
 {
-    public static class JwtRule
+    public static class ApiKeyRule
     {
         public static Rule Create()
         {
             return new Rule
             {
-                Name = "JWT Token",
+                Name = "API Key",
                 Severity = "HIGH",
-                Pattern = @"eyJ[a-zA-Z0-9_-]+\.[a-zA-Z0-9._-]+\.[a-zA-Z0-9._-]+"
+                Pattern = @"(?i)(api[_-]?key|apikey)\s*[:=]\s*['""]?[A-Za-z0-9_\-]{16,}"
             };
         }
     }
