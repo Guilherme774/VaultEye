@@ -18,37 +18,6 @@ namespace VaultEye.CLI
             }
 
             RunInteractiveMode();
-
-
-            // StartProgram();
-
-            // while (true)
-            // {
-            //     string selectedScanning = SelectScanningMode();
-
-            //     switch (selectedScanning)
-            //     {
-            //         case "1":
-            //             ScanResult result = StartDirectoryScanner();
-            //             foreach (var finding in result.Findings)
-            //             {
-            //                 ConsoleFindingFormatter.Print(finding);
-            //             }
-            //             ConsoleSummaryFormatter.Print(result);
-            //             CloseProgram();
-            //             return;
-            //         case "2":
-            //         case "3":
-            //             ShowNotImplemented();
-            //             break;
-            //         case "0":
-            //             CloseProgram();
-            //             return;
-            //         default:
-            //             ShowInvalidOption();
-            //             break;
-            //     }
-            // }
         }
 
         #region PRIVATE METHODS
