@@ -11,33 +11,44 @@ namespace VaultEye.CLI
         {
             StartProgram();
 
-            while (true)
+            if(args.Length > 0)
             {
-                string selectedScanning = SelectScanningMode();
-
-                switch (selectedScanning)
-                {
-                    case "1":
-                        ScanResult result = StartDirectoryScanner();
-                        foreach (var finding in result.Findings)
-                        {
-                            ConsoleFindingFormatter.Print(finding);
-                        }
-                        ConsoleSummaryFormatter.Print(result);
-                        CloseProgram();
-                        return;
-                    case "2":
-                    case "3":
-                        ShowNotImplemented();
-                        break;
-                    case "0":
-                        CloseProgram();
-                        return;
-                    default:
-                        ShowInvalidOption();
-                        break;
-                }
+                RunCliMode(args);
+                return;
             }
+
+            RunInteractiveMode();
+
+
+            // StartProgram();
+
+            // while (true)
+            // {
+            //     string selectedScanning = SelectScanningMode();
+
+            //     switch (selectedScanning)
+            //     {
+            //         case "1":
+            //             ScanResult result = StartDirectoryScanner();
+            //             foreach (var finding in result.Findings)
+            //             {
+            //                 ConsoleFindingFormatter.Print(finding);
+            //             }
+            //             ConsoleSummaryFormatter.Print(result);
+            //             CloseProgram();
+            //             return;
+            //         case "2":
+            //         case "3":
+            //             ShowNotImplemented();
+            //             break;
+            //         case "0":
+            //             CloseProgram();
+            //             return;
+            //         default:
+            //             ShowInvalidOption();
+            //             break;
+            //     }
+            // }
         }
 
         #region PRIVATE METHODS
@@ -67,6 +78,76 @@ namespace VaultEye.CLI
             Console.ForegroundColor = ConsoleColor.DarkGray;
             Console.WriteLine("------------------------------------------------------\n");
             Console.ResetColor();
+        }
+
+        private static void RunInteractiveMode()
+        {
+            while(true)
+            {
+                string selectedScanning =
+                    SelectScanningMode();
+
+                switch(selectedScanning)
+                {
+                    case "1":
+
+                        ScanResult result =
+                            StartDirectoryScanner();
+
+                        PrintResults(result);
+
+                        CloseProgram();
+
+                        return;
+
+                    case "2":
+                    case "3":
+
+                        ShowNotImplemented();
+
+                        break;
+
+                    case "0":
+
+                        CloseProgram();
+
+                        return;
+
+                    default:
+
+                        ShowInvalidOption();
+
+                        break;
+                }
+            }
+        }
+
+        private static void RunCliMode(string[] args)
+        {
+            if(args.Length < 2)
+            {
+                ShowCliHelp();
+                return;
+            }
+
+            string command = args[0].ToLower();
+
+            switch(command)
+            {
+                case "scan":
+                    RunScanCommand(args);
+                    break;
+                case "help":
+                case "h":
+                    ShowCliHelp();
+                    break;
+                default:
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("\n[!] Invalid CLI command!");
+                    Console.ResetColor();
+
+                    break;
+            }
         }
 
         private static string SelectScanningMode()
@@ -130,6 +211,41 @@ namespace VaultEye.CLI
             var core = new ScanOrchestrator();
 
             return core.InitCore(selectedDirectory);
+        }
+
+        private static void RunScanCommand(string[] args)
+        {
+            string directory = args[1];
+
+            var orchestrator = new ScanOrchestrator();
+            ScanResult result = orchestrator.InitCore(directory);
+            
+            PrintResults(result);
+            CloseProgram();
+        }
+
+        private static void PrintResults(ScanResult result)
+        {
+            foreach(var finding in result.Findings)
+            {
+                ConsoleFindingFormatter.Print(finding);
+            }
+
+            ConsoleSummaryFormatter.Print(result);
+        }
+
+        private static void ShowCliHelp()
+        {
+            Console.WriteLine();
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine(" VaultEye CLI Usage");
+            Console.ResetColor();
+
+            Console.WriteLine();
+            Console.WriteLine(" scan <directory>         Scan a directory");
+            Console.WriteLine(" git  <url> (Coming soon) Scan a directory");
+            Console.WriteLine(" help | h                 Show help");
+            Console.WriteLine();
         }
 
         private static void ShowNotImplemented()
