@@ -257,7 +257,6 @@ dotnet run --project src/VaultEye.CLI -- scan ./project --json
 
 ## Next Features
 
-- [ ] SARIF export
 - [ ] Entropy analysis
 - [ ] Docker scanning
 - [ ] Git history scanning
