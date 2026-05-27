@@ -1,151 +1,333 @@
 # VaultEye
 
-VaultEye is a lightweight AppSec and Secret Scanning tool built with C# and .NET.
+<p align="center">
+  <img src="./assets/banner.png" width="100%" />
+</p>
 
-The project focuses on detecting sensitive data, hardcoded credentials, secrets, tokens, and insecure patterns inside source code and files.
+<p align="center">
+  <b>Lightweight AppSec & Secret Scanning Tool</b>
+</p>
 
----
-
-## Features
-
-- Secret scanning
-- Regex-based detection engine
-- Modular architecture
-- CLI interface
-- Extensible rules engine
-- Colored severity output
-- AppSec-focused design
+<p align="center">
+  Recursive security scanner for detecting secrets, tokens, credentials and sensitive data in source code and repositories.
+</p>
 
 ---
 
-## Current Detection Capabilities
+# Overview
 
-VaultEye can currently detect patterns such as:
+VaultEye is an AppSec-focused security scanner built with C# and .NET.
 
-- Hardcoded passwords
-- Secrets
-- Tokens
+The project was created to study and implement real-world concepts related to:
+
+- Application Security (AppSec)
+- Secure SDLC
+- Secret Scanning
+- Static Analysis
+- DevSecOps tooling
+- Detection Engineering
+
+VaultEye recursively scans files and repositories searching for sensitive information such as:
+
+- JWT Tokens
+- AWS Keys
+- GitHub Tokens
 - API Keys
-
-Example:
-
-```env
-password=123456
-secret_key=my-secret
-api_key=abc123
-```
+- Bearer Tokens
+- Connection Strings
+- Private Keys
+- Passwords
+- Secrets
 
 ---
 
-## Project Architecture
+# Features
+
+## Current Features
+
+- Recursive directory scanning
+- Multi-language file support
+- Regex-based detection engine
+- Severity classification
+- Category classification
+- JSON report export
+- CLI arguments
+- Interactive CLI mode
+- Findings summary
+- Ignore directories support
+- Extension filtering
+- Modular architecture
+
+---
+
+# Supported Detection Rules
+
+| Rule | Severity |
+|------|------|
+| JWT Tokens | HIGH |
+| AWS Access Keys | HIGH |
+| GitHub Tokens | HIGH |
+| Generic API Keys | HIGH |
+| Bearer Tokens | HIGH |
+| Connection Strings | MEDIUM |
+| Private Keys | CRITICAL |
+| Password Patterns | HIGH |
+
+---
+
+# Project Architecture
 
 ```txt
-VaultEye
-│
-├── VaultEye.CLI
-├── VaultEye.Core
-├── VaultEye.Scanner
-├── VaultEye.Rules
-├── VaultEye.Reporting
-└── VaultEye.Models
+CLI
+ ├── Program.cs
+
+Core
+ ├── ScanOrchestrator.cs
+
+Scanner
+ ├── FileScannerService.cs
+
+Rules
+ ├── Engines
+ │    └── RegexRuleEngine.cs
+ │
+ ├── Rules
+ │    ├── JwtRule.cs
+ │    ├── AwsKeyRule.cs
+ │    ├── GithubTokenRule.cs
+ │    └── ...
+ │
+ └── RuleFactory.cs
+
+Reporting
+ ├── Formatters
+ │    ├── ConsoleFindingFormatter.cs
+ │    └── ConsoleSummaryFormatter.cs
+ │
+ └── Exporters
+      └── JsonReportExporter.cs
+
+Models
+ ├── Finding.cs
+ ├── Rule.cs
+ ├── ScanResult.cs
+ └── ScannedFile.cs
 ```
 
-### Responsibilities
-
-| Project | Responsibility |
-|---|---|
-| CLI | User input and terminal interaction |
-| Core | Application orchestration |
-| Scanner | File system scanning |
-| Rules | Detection engine and security rules |
-| Reporting | Output formatting |
-| Models | Shared entities and contracts |
-
 ---
 
-## Tech Stack
+# Installation
 
-- C#
-- .NET 8
-- Regex Engine
-- Console CLI
-
----
-
-## Running the Project
-
-### Clone repository
+## Clone Repository
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/Guilherme774/VaultEye.git
 ```
 
-### Build project
+---
+
+## Enter Project
+
+```bash
+cd VaultEye
+```
+
+---
+
+## Build Project
 
 ```bash
 dotnet build
 ```
 
-### Run project
+---
+
+## Run Project
 
 ```bash
-dotnet run --project ./src/VaultEye.CLI
+dotnet run --project src/VaultEye.CLI
 ```
 
 ---
 
-## Example
+# Usage
+
+# Interactive Mode
 
 ```bash
-Set the directory to scan >> ./samples/test.txt
+dotnet run --project src/VaultEye.CLI
 ```
 
-Example output:
+Opens the interactive menu:
 
 ```txt
-[HIGH] Sensitive Credential
-File: ./samples/test.txt
-Line: 12
-Match: password=123456
+[1] File Scanning
+[2] Repository Scanning
+[3] Docker Scanning
+[0] Exit
 ```
 
 ---
 
-## Roadmap
+# CLI Mode
 
-- [ ] Recursive directory scanning
-- [ ] JWT analyzer
-- [ ] AWS Key detection
+## Scan a directory
+
+```bash
+dotnet run --project src/VaultEye.CLI -- scan ./project
+```
+
+---
+
+## Export JSON report
+
+```bash
+dotnet run --project src/VaultEye.CLI -- scan ./project --json
+```
+
+---
+
+# Example Output
+
+```txt
+┌─────────────────────────────────────
+│ [HIGH] JWT Token
+├─────────────────────────────────────
+│ File     : appsettings.json
+│ Line     : 18
+│ Category : Authentication
+│ Match    : eyJhbGcOiJIUzI1Ni...
+└─────────────────────────────────────
+
+══════════════════════════════════════
+              Scan Summary
+══════════════════════════════════════
+
+ Files Scanned  : 43
+ Findings       : 16
+
+ CRITICAL       : 0
+ HIGH           : 16
+ MEDIUM         : 0
+ LOW            : 0
+
+ Duration       : 0.03s
+
+══════════════════════════════════════
+```
+
+---
+
+# JSON Export Example
+
+```json
+{
+  "filesScanned": 43,
+  "findingsCount": 16,
+  "durationSeconds": 0.03,
+  "findings": [
+    {
+      "ruleName": "JWT Token",
+      "severity": "HIGH",
+      "category": "Authentication",
+      "filePath": "appsettings.json",
+      "lineNumber": 18,
+      "matchedContent": "eyJhbGcOi..."
+    }
+  ]
+}
+```
+
+---
+
+# Roadmap
+
+## Current
+
+- [x] Recursive scanning
+- [x] Regex detection engine
+- [x] Severity classification
+- [x] Category classification
+- [x] CLI support
+- [x] JSON export
+- [x] Interactive mode
+- [x] Extension filtering
+
+---
+
+## Next Features
+
+- [ ] SARIF export
 - [ ] Entropy analysis
-- [ ] JSON reporting
-- [ ] SARIF reporting
-- [ ] HTML reports
-- [ ] GitHub Actions integration
-- [ ] Multithread scanning
+- [ ] Docker scanning
+- [ ] Git history scanning
+- [ ] Parallel scanning
 - [ ] CI/CD integration
+- [ ] GitHub Action
+- [ ] Custom rule loading
+- [ ] Ignore file support (.vaultignore)
+- [ ] Performance optimization
+- [ ] Binary detection
+- [ ] Minified file detection
 
 ---
 
-## Goals
+# Screenshots
 
-This project was created to:
+# 1. CLI Startup Banner
 
-- Study AppSec concepts
-- Improve knowledge in secure development
-- Practice software architecture
-- Build security-focused tooling
-- Explore SAST and Secret Scanning techniques
+## Image Location
+
+![Summary](./assets/screenshots/banner.png)
 
 ---
 
-## Disclaimer
+# 2. Findings Detection
 
-VaultEye is an educational and research-oriented project.
+## Image Location
 
-Use responsibly.
+![Summary](./assets/screenshots/findings.png)
 
 ---
 
-## License
+# 3. Final Summary
 
-MIT
+## Image Location
+
+![Summary](./assets/screenshots/summary.png)
+
+---
+
+# Technologies
+
+- C#
+- .NET 8
+- Regex Engine
+- System.Text.Json
+
+---
+
+# Purpose
+
+This project was created for educational and research purposes focused on:
+
+- AppSec
+- DevSecOps
+- Detection Engineering
+- Secure Development
+- Secret Scanning
+
+---
+
+# License
+
+MIT License
+
+---
+
+# Author
+
+Guilherme Silva
+
+GitHub:
+https://github.com/Guilherme774
