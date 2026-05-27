@@ -2,6 +2,7 @@
 using VaultEye.Models;
 using VaultEye.Reporting;
 using VaultEye.Reporting.formatters;
+using VaultEye.Reporting.exporters;
 
 namespace VaultEye.CLI
 {
@@ -184,12 +185,25 @@ namespace VaultEye.CLI
 
         private static void RunScanCommand(string[] args)
         {
-            string directory = args[1];
+            if(args.Length < 2)
+            {
+                ShowCliHelp();
+                return;
+            }
 
+            string directory = args[1];
+            bool exportJson = args.Contains("--json");
             var orchestrator = new ScanOrchestrator();
+
             ScanResult result = orchestrator.InitCore(directory);
-            
+
             PrintResults(result);
+
+            if(exportJson)
+            {
+                JsonReportExporter.Export(result);
+            }
+
             CloseProgram();
         }
 
@@ -211,9 +225,11 @@ namespace VaultEye.CLI
             Console.ResetColor();
 
             Console.WriteLine();
-            Console.WriteLine(" scan <directory>         Scan a directory");
-            Console.WriteLine(" git  <url> (Coming soon) Scan a directory");
-            Console.WriteLine(" help | h                 Show help");
+            Console.WriteLine(" scan   <directory>           Scan a directory");
+            Console.WriteLine(" git    <url>  (Coming soon)  Scan a Github repository");
+            Console.WriteLine(" docker <path> (Coming soon)  Scan a Docker environment");
+            Console.WriteLine("\n --json                       Flag to export scan results to a JSON file");
+            Console.WriteLine("\n help | h                     Show help");
             Console.WriteLine();
         }
 
