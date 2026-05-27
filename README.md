@@ -259,6 +259,7 @@ dotnet run --project src/VaultEye.CLI -- scan ./project --json
 
 - [ ] Entropy analysis
 - [ ] Docker scanning
+- [ ] Git repository scanning
 - [ ] Git history scanning
 - [ ] Parallel scanning
 - [ ] CI/CD integration

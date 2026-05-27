@@ -60,33 +60,19 @@ namespace VaultEye.CLI
                 switch(selectedScanning)
                 {
                     case "1":
-
-                        ScanResult result =
-                            StartDirectoryScanner();
-
+                        ScanResult result = StartDirectoryScanner();
                         PrintResults(result);
-
                         CloseProgram();
-
                         return;
-
                     case "2":
                     case "3":
-
                         ShowNotImplemented();
-
                         break;
-
                     case "0":
-
                         CloseProgram();
-
                         return;
-
                     default:
-
                         ShowInvalidOption();
-
                         break;
                 }
             }
