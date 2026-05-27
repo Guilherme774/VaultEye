@@ -41,7 +41,7 @@ namespace VaultEye.CLI
             Console.ResetColor();
 
             Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine(" VaultEye Security Scanner");
+            Console.WriteLine(" VaultEye Security Scanner v0.1-alpha");
             Console.WriteLine(" Lightweight AppSec & Secret Scanning Tool");
             Console.ResetColor();
 

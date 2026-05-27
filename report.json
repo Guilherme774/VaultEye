@@ -1,0 +1,259 @@
+{
+  "FilesScanned": 45,
+  "FindingsCount": 31,
+  "DurationSeconds": 0.0338192,
+  "Findings": [
+    {
+      "RuleName": "Bearer Token",
+      "Category": 1,
+      "Severity": 2,
+      "FilePath": ".\\README.md",
+      "LineNumber": 36,
+      "MatchedContent": "- Bearer Tokens"
+    },
+    {
+      "RuleName": "Bearer Token",
+      "Category": 1,
+      "Severity": 2,
+      "FilePath": ".\\README.md",
+      "LineNumber": 71,
+      "MatchedContent": "| Bearer Tokens | HIGH |"
+    },
+    {
+      "RuleName": "Bearer Token",
+      "Category": 1,
+      "Severity": 2,
+      "FilePath": ".\\report.json",
+      "LineNumber": 7,
+      "MatchedContent": "\u0022RuleName\u0022: \u0022Bearer Token\u0022,"
+    },
+    {
+      "RuleName": "Bearer Token",
+      "Category": 1,
+      "Severity": 2,
+      "FilePath": ".\\report.json",
+      "LineNumber": 12,
+      "MatchedContent": "\u0022MatchedContent\u0022: \u0022- Bearer Tokens\u0022"
+    },
+    {
+      "RuleName": "Bearer Token",
+      "Category": 1,
+      "Severity": 2,
+      "FilePath": ".\\report.json",
+      "LineNumber": 15,
+      "MatchedContent": "\u0022RuleName\u0022: \u0022Bearer Token\u0022,"
+    },
+    {
+      "RuleName": "Bearer Token",
+      "Category": 1,
+      "Severity": 2,
+      "FilePath": ".\\report.json",
+      "LineNumber": 20,
+      "MatchedContent": "\u0022MatchedContent\u0022: \u0022| Bearer Tokens | HIGH |\u0022"
+    },
+    {
+      "RuleName": "Bearer Token",
+      "Category": 1,
+      "Severity": 2,
+      "FilePath": ".\\report.json",
+      "LineNumber": 23,
+      "MatchedContent": "\u0022RuleName\u0022: \u0022Bearer Token\u0022,"
+    },
+    {
+      "RuleName": "Bearer Token",
+      "Category": 1,
+      "Severity": 2,
+      "FilePath": ".\\report.json",
+      "LineNumber": 28,
+      "MatchedContent": "\u0022MatchedContent\u0022: \u0022Name = \\u0022Bearer Token\\u0022,\u0022"
+    },
+    {
+      "RuleName": "Hardcoded Password",
+      "Category": 0,
+      "Severity": 2,
+      "FilePath": ".\\report.json",
+      "LineNumber": 36,
+      "MatchedContent": "\u0022MatchedContent\u0022: \u0022//PASSWORD=12345\u0022"
+    },
+    {
+      "RuleName": "Hardcoded Password",
+      "Category": 0,
+      "Severity": 2,
+      "FilePath": ".\\report.json",
+      "LineNumber": 44,
+      "MatchedContent": "\u0022MatchedContent\u0022: \u0022secret=123123asd\u0022"
+    },
+    {
+      "RuleName": "Hardcoded Password",
+      "Category": 0,
+      "Severity": 2,
+      "FilePath": ".\\report.json",
+      "LineNumber": 52,
+      "MatchedContent": "\u0022MatchedContent\u0022: \u0022passwd=123123zxcqw41\u0022"
+    },
+    {
+      "RuleName": "Hardcoded Password",
+      "Category": 0,
+      "Severity": 2,
+      "FilePath": ".\\report.json",
+      "LineNumber": 60,
+      "MatchedContent": "\u0022MatchedContent\u0022: \u0022password=12312\u0022"
+    },
+    {
+      "RuleName": "Hardcoded Password",
+      "Category": 0,
+      "Severity": 2,
+      "FilePath": ".\\report.json",
+      "LineNumber": 68,
+      "MatchedContent": "\u0022MatchedContent\u0022: \u0022//PASSWORD=12345\u0022"
+    },
+    {
+      "RuleName": "Hardcoded Password",
+      "Category": 0,
+      "Severity": 2,
+      "FilePath": ".\\report.json",
+      "LineNumber": 76,
+      "MatchedContent": "\u0022MatchedContent\u0022: \u0022secret=123123asd\u0022"
+    },
+    {
+      "RuleName": "Hardcoded Password",
+      "Category": 0,
+      "Severity": 2,
+      "FilePath": ".\\report.json",
+      "LineNumber": 84,
+      "MatchedContent": "\u0022MatchedContent\u0022: \u0022passwd=123123zxcqw41\u0022"
+    },
+    {
+      "RuleName": "Hardcoded Password",
+      "Category": 0,
+      "Severity": 2,
+      "FilePath": ".\\report.json",
+      "LineNumber": 92,
+      "MatchedContent": "\u0022MatchedContent\u0022: \u0022password=12312\u0022"
+    },
+    {
+      "RuleName": "Hardcoded Password",
+      "Category": 0,
+      "Severity": 2,
+      "FilePath": ".\\report.json",
+      "LineNumber": 100,
+      "MatchedContent": "\u0022MatchedContent\u0022: \u0022secret=123123asd\u0022"
+    },
+    {
+      "RuleName": "Hardcoded Password",
+      "Category": 0,
+      "Severity": 2,
+      "FilePath": ".\\report.json",
+      "LineNumber": 108,
+      "MatchedContent": "\u0022MatchedContent\u0022: \u0022passwd=123123zxcqw41\u0022"
+    },
+    {
+      "RuleName": "Hardcoded Password",
+      "Category": 0,
+      "Severity": 2,
+      "FilePath": ".\\report.json",
+      "LineNumber": 116,
+      "MatchedContent": "\u0022MatchedContent\u0022: \u0022password=12312\u0022"
+    },
+    {
+      "RuleName": "Bearer Token",
+      "Category": 1,
+      "Severity": 2,
+      "FilePath": ".\\src\\VaultEye.Rules\\rules\\BearerTokenRule.cs",
+      "LineNumber": 12,
+      "MatchedContent": "Name = \u0022Bearer Token\u0022,"
+    },
+    {
+      "RuleName": "Hardcoded Password",
+      "Category": 0,
+      "Severity": 2,
+      "FilePath": ".\\test\\index.html",
+      "LineNumber": 5,
+      "MatchedContent": "//PASSWORD=12345"
+    },
+    {
+      "RuleName": "Hardcoded Password",
+      "Category": 0,
+      "Severity": 2,
+      "FilePath": ".\\test\\test.txt",
+      "LineNumber": 14,
+      "MatchedContent": "secret=123123asd"
+    },
+    {
+      "RuleName": "Hardcoded Password",
+      "Category": 0,
+      "Severity": 2,
+      "FilePath": ".\\test\\test.txt",
+      "LineNumber": 18,
+      "MatchedContent": "passwd=123123zxcqw41"
+    },
+    {
+      "RuleName": "Hardcoded Password",
+      "Category": 0,
+      "Severity": 2,
+      "FilePath": ".\\test\\test.txt",
+      "LineNumber": 34,
+      "MatchedContent": "password=12312"
+    },
+    {
+      "RuleName": "Hardcoded Password",
+      "Category": 0,
+      "Severity": 2,
+      "FilePath": ".\\test\\models\\index.html",
+      "LineNumber": 5,
+      "MatchedContent": "//PASSWORD=12345"
+    },
+    {
+      "RuleName": "Hardcoded Password",
+      "Category": 0,
+      "Severity": 2,
+      "FilePath": ".\\test\\models\\test2.txt",
+      "LineNumber": 14,
+      "MatchedContent": "secret=123123asd"
+    },
+    {
+      "RuleName": "Hardcoded Password",
+      "Category": 0,
+      "Severity": 2,
+      "FilePath": ".\\test\\models\\test2.txt",
+      "LineNumber": 18,
+      "MatchedContent": "passwd=123123zxcqw41"
+    },
+    {
+      "RuleName": "Hardcoded Password",
+      "Category": 0,
+      "Severity": 2,
+      "FilePath": ".\\test\\models\\test2.txt",
+      "LineNumber": 34,
+      "MatchedContent": "password=12312"
+    },
+    {
+      "RuleName": "Hardcoded Password",
+      "Category": 0,
+      "Severity": 2,
+      "FilePath": ".\\test\\src\\model.txt",
+      "LineNumber": 14,
+      "MatchedContent": "secret=123123asd"
+    },
+    {
+      "RuleName": "Hardcoded Password",
+      "Category": 0,
+      "Severity": 2,
+      "FilePath": ".\\test\\src\\model.txt",
+      "LineNumber": 18,
+      "MatchedContent": "passwd=123123zxcqw41"
+    },
+    {
+      "RuleName": "Hardcoded Password",
+      "Category": 0,
+      "Severity": 2,
+      "FilePath": ".\\test\\src\\model.txt",
+      "LineNumber": 34,
+      "MatchedContent": "password=12312"
+    }
+  ],
+  "CriticalCount": 0,
+  "HighCount": 31,
+  "MediumCount": 0,
+  "LowCount": 0
+}
